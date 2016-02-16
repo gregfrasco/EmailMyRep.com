@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/gregfrasco/EmailMyRep.com/issues"
   },
-  "homepage": "https://github.com/gregfrasco/EmailMyRep.com#readme"
+  "homepage": "https://github.com/gregfrasco/EmailMyRep.com#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
