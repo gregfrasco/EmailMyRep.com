@@ -1,22 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <style>
 .col-centered{
-  float: none;
-  margin: 0 auto;
+  text-align: center;
 }
 </style>
 
-<div class="container center-block">
+<div class="container-fluid">
   <div class="row" style="margin-top: 10%">
-    <div class="col-lg-1 col-centered">
+    <div class="col-md-6 col-md-offset-3 col-centered">
       <h1>EmailMyRep.com</h1>
     </div>
   </div>
-  <div class="row"style="margin-top: 10%">
-    <p>
-      Get involved in the political process and email your repsertive.
-    </p>
+  <div class="row" style="margin-top: 10%">
+    <div class="col-md-6 col-md-offset-3 col-centered">
+      <p>
+        Get involved in the political process and email your representatives.
+      </p>
+    </div>
   </div>
-  <div class="row"style="margin-top: 10%">
-    <a class="button btn-lg btn-danger">Login with<i class="google icon"></i></a>
+  <div class="row" style="margin-top: 10%">
+    <div class="form-group col-md-4 col-md-offset-4 col-centered">
+      <label for="emailInput">Email address</label>
+      <input type="email" class="form-control" id="emailInput" placeholder="user@example.com">
+    </div>
+    <div class="form-group col-md-4 col-md-offset-4 col-centered">
+      <label for="passwordInput">Password</label>
+      <input type="password" class="form-control" id="passwwordInput" placeholder="Password">
+    </div>
+    <div class="col-md-6 col-md-offset-3 col-centered">
+      <a class="button btn-lg btn-danger">Log in with <i class="google icon"></i></a>
+    </div>
   </div>
 </div>
+
+</html>
