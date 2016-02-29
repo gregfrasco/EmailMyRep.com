@@ -11,14 +11,16 @@ var users = require('./routes/users');
 var app = express();
 var pg = require('pg');
 
+
+var connectionString = 'postgres://emailMyRep:emailMyRep@localhost:5433/emailMyRep';
 app.get('/db', function (request, response) {
-  pg.connect('postgres://yoxjkheqmhjxpc:UiOrOvQjruiQjdoXUgJvApopk_@ec2-107-20-148-211.compute-1.amazonaws.com:5432/daukl24u24mkoh', function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
+  pg.connect(connectionString, function(err, client, done) {
+    client.query("SELECT * FROM \"Templetes\";", function(err, result) {
       done();
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.render('pages/db', {results: result.rows} ); }
+       { response.render('test', {results: result.rows} ); }
     });
   });
 })

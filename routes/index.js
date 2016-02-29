@@ -18,4 +18,8 @@ router.get('/email', function(req, res, next) {
   res.render('email', { title: 'email' });
 });
 
+/* GET email page. */
+router.get('/db', function(req, res, next) {
+  res.render('test', { title: 'testx' });
+});
 module.exports = router;
