@@ -3,7 +3,7 @@ var router = express.Router();
 
 var pg = require('pg');
 //localhost
-var connectionString = 'postgres://emailMyRep:emailMyRep@localhost:5433/emailMyRep';
+var connectionString = 'postgres://emailMyRep:emailMyRep@localhost:5432/emailMyRep';
 //remote
 //var connectionString = 'idk yet'
 
@@ -17,9 +17,10 @@ router.get('/topics', function(req, res, next) {
     client.query("SELECT * FROM \"Topics\";", function(err, result) {
       done();
       if (err)
-       { console.error(err); response.send("Error " + err); }
+       { console.error(err); res.send("Error " + err); }
       else
-       { response.render('topics', {results: result.rows} ); }
+       { res.render('topics', {results: result.rows} ); }
+
     });
 });
 });
