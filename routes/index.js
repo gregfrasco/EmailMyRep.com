@@ -27,12 +27,12 @@ router.get('/topics', function(req, res, next) {
 /* GET template page. */
 router.get('/template', function(req, res, next) {
   pg.connect(connectionString, function(err, client, done) {
-    client.query("SELECT * FROM \"Template\";", function(err, result) {
+    client.query("SELECT * FROM \"Templates\";", function(err, result) {
       done();
       if (err)
-       { console.error(err); response.send("Error " + err); }
+       { console.error(err); res.send("Error " + err); }
       else
-       { response.render('template', {results: result.rows} ); }
+       { res.render('template', {results: result.rows} ); }
     });
 });
 });
