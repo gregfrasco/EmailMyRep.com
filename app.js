@@ -11,7 +11,6 @@ var users = require('./routes/users');
 var app = express();
 var pg = require('pg');
 
-
 var connectionString = 'postgres://emailMyRep:emailMyRep@localhost:5433/emailMyRep';
 app.get('/db', function (request, response) {
   pg.connect(connectionString, function(err, client, done) {
@@ -20,7 +19,8 @@ app.get('/db', function (request, response) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.render('test', {results: result.rows} ); }
+       { response.render('test', {results: result.rows} ); console.log(result.rows); }
+
     });
   });
 })
