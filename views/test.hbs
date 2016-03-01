@@ -1,12 +1,10 @@
 <h1>HELLO!</h1>
 <br />
-<ul>
-  {{#each results}}
-    <li>
-      <h2>{{Title}}</h2>
-      <p>
-        {{Description}}
-      </p>
-    </li>
-  {{/each}}
-</ul>
+<div class="dropdown">
+  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Templates <b class="caret"></b></a>
+  <ul class="dropdown-menu">
+    {{#each results}}
+    <li><a href="#">{{Description}}</a></li>
+    {{/each}}
+  </ul>
+</div>
