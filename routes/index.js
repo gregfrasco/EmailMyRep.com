@@ -20,13 +20,20 @@ router.get('/topics', function(req, res, next) {
        { console.error(err); response.send("Error " + err); }
       else
        { response.render('topics', {results: result.rows} ); }
-
     });
-  res.render('topics', { title: 'topics' });
+});
 });
 /* GET template page. */
 router.get('/template', function(req, res, next) {
-  res.render('template', { title: 'template' });
+  pg.connect(connectionString, function(err, client, done) {
+    client.query("SELECT * FROM \"Template\";", function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('template', {results: result.rows} ); }
+    });
+});
 });
 /* GET email page. */
 router.get('/email', function(req, res, next) {

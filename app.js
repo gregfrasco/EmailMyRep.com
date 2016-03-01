@@ -14,13 +14,12 @@ var pg = require('pg');
 var connectionString = 'postgres://emailMyRep:emailMyRep@localhost:5433/emailMyRep';
 app.get('/db', function (request, response) {
   pg.connect(connectionString, function(err, client, done) {
-    client.query("SELECT * FROM \"Templetes\";", function(err, result) {
+    client.query("SELECT * FROM \"Templates\";", function(err, result) {
       done();
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
        { response.render('test', {results: result.rows} ); console.log(result.rows); }
-
     });
   });
 })
