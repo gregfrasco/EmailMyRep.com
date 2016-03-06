@@ -2,31 +2,38 @@
 .col-centered{
   text-align: center;
 }
+.background-images{
+  background-image: url("CapitolBuilding.jpg");
+  background-repeat:no-repeat;
+  background-position: center center;
+}
 </style>
-
-<div class="container-fluid">
-  <div class="row" style="margin-top: 5%">
-    <div class="col-md-6 col-md-offset-3 col-centered">
-      <h1>EmailMyRep.com</h1>
+<div class="background-images">
+  <div class="container-fluid">
+    <div class="row" style="margin-top: 5%">
+      <div class="col-md-6 col-md-offset-3 col-centered">
+        <h1>EmailMyRep.com</h1>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5%">
+      <div class="col-md-6 col-md-offset-3 col-centered">
+        <p>
+          Get involved in the political process and email your representatives.
+        </p>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5%">
+      <div class="form-group col-md-4 col-md-offset-4 col-centered">
+        <label for="emailInput">Email address</label>
+        <input type="email" class="form-control" id="emailInput" placeholder="user@example.com">
+      </div>
+      <div class="form-group col-md-4 col-md-offset-4 col-centered">
+        <label for="passwordInput">Password</label>
+        <input type="password" class="form-control" id="passwwordInput" placeholder="Password">
+      </div>
+      <div class="col-md-6 col-md-offset-3 col-centered" style="margin-top: 5%">
+        <a href="/auth/google" class="btn btn-danger">Log in with <i class="google icon"></i></a>
+      </div>
     </div>
   </div>
-  <div class="row" style="margin-top: 5%">
-    <div class="col-md-6 col-md-offset-3 col-centered">
-      <p>
-        Get involved in the political process and email your representatives.
-      </p>
-    </div>
-  </div>
-  <div class="row" style="margin-top: 5%">
-    <div class="form-group col-md-4 col-md-offset-4 col-centered">
-      <label for="emailInput">Email address</label>
-      <input type="email" class="form-control" id="emailInput" placeholder="user@example.com">
-    </div>
-    <div class="form-group col-md-4 col-md-offset-4 col-centered">
-      <label for="passwordInput">Password</label>
-      <input type="password" class="form-control" id="passwwordInput" placeholder="Password">
-    </div>
-    <div class="col-md-6 col-md-offset-3 col-centered" style="margin-top: 5%">
-      <a href="/auth/google" class="btn btn-danger">Log in with <i class="google icon"></i></a>
-    </div>
-  </div>
+</div>
