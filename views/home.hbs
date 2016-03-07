@@ -2,14 +2,36 @@
 .col-centered{
   text-align: center;
 }
-.background-images{
-  background-image: url("CapitolBuilding.jpg");
-  background-repeat:no-repeat;
-  background-position: center center;
+html,body{
+  margin:0;
+  height:100%;
+  overflow:hidden;
+}
+img{
+  min-height:100%;
+  min-width:100%;
+  height:auto;
+  width:auto;
+  position:absolute;
+  top:-100%; bottom:-100%;
+  left:-100%; right:-100%;
+  margin:auto;
+}
+.container-fluid{
+  margin-top:5%;
+  margin-right:10%;
+  margin-bottom:5%;
+  margin-left:10%;
+}
+.darker{
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
 }
 </style>
-<div class="background-images">
-  <div class="container-fluid">
+<img src="images/CapitolBuilding.jpg" />
+<div class="container-fluid">
+  <div class="darker">
     <div class="row" style="margin-top: 5%">
       <div class="col-md-6 col-md-offset-3 col-centered">
         <h1>EmailMyRep.com</h1>
@@ -23,16 +45,8 @@
       </div>
     </div>
     <div class="row" style="margin-top: 5%">
-      <div class="form-group col-md-4 col-md-offset-4 col-centered">
-        <label for="emailInput">Email address</label>
-        <input type="email" class="form-control" id="emailInput" placeholder="user@example.com">
-      </div>
-      <div class="form-group col-md-4 col-md-offset-4 col-centered">
-        <label for="passwordInput">Password</label>
-        <input type="password" class="form-control" id="passwwordInput" placeholder="Password">
-      </div>
       <div class="col-md-6 col-md-offset-3 col-centered" style="margin-top: 5%">
-        <a href="/auth/google" class="btn btn-danger">Log in with <i class="google icon"></i></a>
+        <a href="/login" class="btn">Log in or create an account</a>
       </div>
     </div>
   </div>
