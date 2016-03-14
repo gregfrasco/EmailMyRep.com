@@ -3,39 +3,6 @@
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 
-//HMAC version
-// var secrets = require('../config/secrets');
-// function createHash(string) {
-//   if(!string)
-//     return null;
-
-//   var hashKey = secrets.localAuth.hashKey;
-//   var hmac = crypto.createHmac(secrets.localAuth.hashMethod, new Buffer(hashKey, 'utf-8'));
-//   return hmac.update(new Buffer(string, 'utf-8')).digest('hex');
-// }
-
-var instanceMethods = {
-  getGravatarUrl: function(size) {
-    if (!size) size = 200;
-
-    if (!this.email) {
-      return 'https://gravatar.com/avatar/?s=' + size + '&d=retro';
-    }
-
-    var md5 = crypto.createHash('md5').update(this.email).digest('hex');
-    return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=retro';
-  },
-  getProfilePicture: function(size) {
-    if(this.profile && this.profile.picture != null)
-      return this.profile.picture;
-
-    return this.getGravatarUrl(size);
-  },
-  hasSetPassword: function() {
-    return this.password != null && this.password.length > 0;
-  }
-};
-
 var beforeSaveHook = function(user, options, fn) {
   if(user.changed('password')) {
     this.encryptPassword(user.password, function(hash, err) {
@@ -87,11 +54,16 @@ module.exports = function(db, DataTypes) {
       allowNull: false,
       isEmail: true
     },
+    addressLine1: DataTypes.STRING,
+    addressLine2: DataTypes.STRING,
+    city: DataTypes.STRING,
+    state: DataTypes.STRING,
+    zip: DataTypes.STRING,
+    phone: DataTypes.INTEGER,
     profile: DataTypes.JSON,
     tokens: DataTypes.JSON
   }, {
-    tableName: 'pl_users',
-    instanceMethods: instanceMethods,
+    tableName: 'users',
     classMethods: {
       associate: function(models) {
         //User.hasMany(models.Role);
