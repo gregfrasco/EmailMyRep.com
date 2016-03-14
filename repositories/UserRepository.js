@@ -66,9 +66,12 @@ repo.changeProfileData = function(userId, reqBody) {
     .then(function(user) {
       user.email = reqBody.email || '';
       user.profile.name = reqBody.name || '';
-      user.profile.gender = reqBody.gender || '';
-      user.profile.location = reqBody.location || '';
-      user.profile.website = reqBody.website || '';
+      user.profile.addressLine1 = reqBody.addressLine1 || '';
+      user.profile.addressLine2 = reqBody.addressLine2 || '';
+      user.profile.city = reqBody.city || '';
+      user.profile.state = reqBody.state || '';
+      user.profile.zip = reqBody.zip || '';
+      user.profile.phone = reqBody.phone || '';
       user.set('profile', user.profile);
 
       if(user.changed('email')) {

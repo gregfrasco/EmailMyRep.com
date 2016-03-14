@@ -54,12 +54,6 @@ module.exports = function(db, DataTypes) {
       allowNull: false,
       isEmail: true
     },
-    addressLine1: DataTypes.STRING,
-    addressLine2: DataTypes.STRING,
-    city: DataTypes.STRING,
-    state: DataTypes.STRING,
-    zip: DataTypes.STRING,
-    phone: DataTypes.INTEGER,
     profile: DataTypes.JSON,
     tokens: DataTypes.JSON
   }, {
