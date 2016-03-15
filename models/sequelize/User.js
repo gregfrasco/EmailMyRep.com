@@ -57,10 +57,10 @@ module.exports = function(db, DataTypes) {
     profile: DataTypes.JSON,
     tokens: DataTypes.JSON
   }, {
-    tableName: 'users',
+    tableName: 'Users',
     classMethods: {
       associate: function(models) {
-        //User.hasMany(models.Role);
+        User.hasMany(models.Email);
       },
       encryptPassword: function(password, cb) {
         if (!password) {
@@ -127,6 +127,5 @@ module.exports = function(db, DataTypes) {
       }
     ]
   });
-
   return User;
 };
