@@ -30,8 +30,11 @@ var connectAssets = require('connect-assets');
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+var topicController = require('./controllers/topic');
+/*
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+*/
 
 /**
  * API keys and Passport configuration.
@@ -146,17 +149,19 @@ app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
-app.get('/contact', contactController.getContact);
-app.post('/contact', contactController.postContact);
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.delete('/account', passportConf.isAuthenticated, userController.deleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
-
+/*
+* Topic routes
+*/
+app.get('/topic',topicController.getTopic);
+app.post('/topic',topicController.postTopic);
 /**
  * API examples routes.
- */
+
 app.get('/api', apiController.getApi);
 app.get('/api/lastfm', apiController.getLastfm);
 app.get('/api/nyt', apiController.getNewYorkTimes);
@@ -183,6 +188,7 @@ app.get('/api/paypal/cancel', apiController.getPayPalCancel);
 app.get('/api/lob', apiController.getLob);
 app.get('/api/bitgo', apiController.getBitGo);
 app.post('/api/bitgo', apiController.postBitGo);
+*/
 
 function safeRedirectToReturnTo(req, res) {
   var returnTo = req.session.returnTo || '/';

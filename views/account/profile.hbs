@@ -57,7 +57,7 @@
         <div class="form-group">
           <div class="col-sm-offset-4 col-sm-6">
             <button type="submit" class="btn btn btn-primary" ng-disabled="profileForm.$invalid">
-              <i class="fa fa-pencil"></i>Update Profile
+              <i class="fa fa-pencil"></i> Update Profile
             </button>
           </div>
         </div>
@@ -124,25 +124,24 @@
         <div class="form-group">
           <div class="col-sm-offset-4 col-sm-6">
             <button type="submit" class="btn btn btn-primary" ng-disabled="pswForm.$invalid || pswChange.psw != pswChange.psw1">
-              <i class="fa fa-lock"></i>Change Password
+              <i class="fa fa-lock"></i> Change Password
             </button>
           </div>
         </div>
-        <div class="alert-container" ng-show="pswChange.psw != pswChange.psw1 && pswChange.psw1">
-          <hr>
-          <div class="alert alert-danger">Passwords do not match!</div>
-        </div>
       </form>
+      </div>
 
-    </div>
+
     <div class="col-sm-6">
+      <form action="/account/delete" method="POST" class="form-horizontal">
       <div class="page-header">
         <h3>Delete Account</h3>
       </div>
       <p>You can delete your account, but keep in mind this action is irreversible.</p>
-      <button class="btn btn-danger" ng-click="deactivateAccount()">
+      <button class="btn btn-danger">
         <i class="fa fa-trash"></i> Delete my account
       </button>
+    </form>
     </div>
   </div>
 </div>
