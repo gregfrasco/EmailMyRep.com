@@ -16,15 +16,11 @@
       <div class="col-md-6">
         <label for="templates">Topics</label>
         <div class="well">
+          {{#each allTopics}}
           <div class="radio">
-            <label><input type="radio" name="optradio">Public Transport</label>
+            <label><input type="radio" name="optradio">{{this.title}}</label>
           </div>
-          <div class="radio">
-            <label><input type="radio" name="optradio">Option 2</label>
-          </div>
-          <div class="radio">
-            <label><input type="radio" name="optradio">Option 3</label>
-          </div>
+          {{/each}}
         </div>
       </div>
       <!-- Decription -->
