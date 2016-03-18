@@ -31,6 +31,8 @@ var connectAssets = require('connect-assets');
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var topicController = require('./controllers/topic');
+var templateController = require('./controllers/template');
+var emailController = require('./controllers/email');
 /*
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
@@ -159,6 +161,18 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 */
 app.get('/topic',topicController.getTopic);
 app.post('/topic',topicController.postTopic);
+
+/*
+* Template routes
+*/
+app.get('/template', templateController.getTemplate);
+app.post('/template', templateController.postTemplate);
+
+/*
+* Email routes
+*/
+app.get('/email', emailController.getEmail);
+app.post('/email', emailController.postEmail);
 /**
  * API examples routes.
 
