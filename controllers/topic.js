@@ -16,7 +16,7 @@ exports.getTopic = function(req, res) {
         allTopics: topics
       });
   }
-  req.flash('errors',{ msg: 'You must be login to do this'});
+  req.flash('errors',{ msg: 'You must be logged in to do this'});
   return res.redirect('/account');
 };
 
