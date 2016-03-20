@@ -1,17 +1,22 @@
 "use strict";
 
+var TemplateRepo = require('../repositories/TemplateRepository.js');
 /**
  * Get /template
  * Select A Template
  */
 exports.getTemplate = function(req, res) {
   if (req.user){
-    return res.render('template.hbs', {
-      title: 'Templates'
+    var topicID = req.query.topic;
+    TemplateRepo.getTemplates(topicID).then(function(templates){
+      return res.render('template.hbs', {
+        templates: templates
+      });
     });
-  }
+  } else {
   req.flash('errors',{ msg: 'You must be logged in to do this'});
   return res.redirect('/account');
+}
 };
 
 /**

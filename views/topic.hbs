@@ -4,7 +4,8 @@
 }
 </style>
 <div class="container">
-  <form>
+  <form method="POST" action="/topic" name="topicForm">
+    <input type="hidden" name="_csrf" value="{{_csrf}}"/>
     <div class="row">
       <div class="col-centered">
         <h1>Select a Topic</h1>
@@ -16,9 +17,9 @@
       <div class="col-md-6">
         <label for="templates">Topics</label>
         <div class="well">
-          {{#each allTopics}}
+          {{#each topics}}
           <div class="radio">
-            <label><input type="radio" name="optradio">{{this.title}}</label>
+            <label><input type="radio" name="topicID" value="{{this.id}}">{{this.title}}</label>
           </div>
           {{/each}}
         </div>
@@ -33,8 +34,7 @@
     </div>
     <div class="row">
       <div class="col-md-4 col-md-offset-4 col-centered">
-        <a href="/template" class="btn btn-lg btn-danger">Select</a>
-        <!--<button type="submit" class="btn btn-lg btn-danger">Select</button>-->
+         <input class="btn btn-lg btn-danger" type="submit" value="Select">
       </div>
     </div>
   </form>

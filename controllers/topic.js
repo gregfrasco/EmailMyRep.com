@@ -2,33 +2,32 @@
 
 var TopicRepo = require('../repositories/TopicRepository.js');
 /**
- * Get /topic
- * Select A Topic
- */
+* Get /topic
+* Select A Topic
+*/
 exports.getTopic = function(req, res) {
   if (req.user){
-    var topics = TopicRepo.getTopics();
-      console.log('topics');
-      topics.forEach(function (topic){
-        console.log(topic.title);
-      });
+    TopicRepo.getTopics().then(function(topics){
       return res.render('topic.hbs', {
-        allTopics: topics
+        topics: topics
       });
+    });
+  } else {
+    req.flash('errors',{ msg: 'You must be logged in to do this'});
+    return res.redirect('/account');
   }
-  req.flash('errors',{ msg: 'You must be logged in to do this'});
-  return res.redirect('/account');
 };
 
 /**
- * POST /topic
- * Send topic to Templete Page
- */
+* POST /topic
+* Send topic to Templete Page
+*/
 exports.postTopic = function(req, res) {
   var errors = req.validationErrors();
   if (errors) {
     req.flash('errors', errors);
     return res.redirect('/topic');
+  } else {
+    return res.redirect('/template?topic=' + req.body.topicID);
   }
-  return res.redirect('/template');
 };
