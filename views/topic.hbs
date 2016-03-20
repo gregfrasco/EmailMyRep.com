@@ -1,0 +1,41 @@
+<style>
+.col-centered{
+  text-align: center;
+}
+</style>
+<div class="container">
+  <form method="POST" action="/topic" name="topicForm">
+    <input type="hidden" name="_csrf" value="{{_csrf}}"/>
+    <div class="row">
+      <div class="col-centered">
+        <h1>Select a Topic</h1>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <!-- Templete List -->
+      <div class="col-md-6">
+        <label for="templates">Topics</label>
+        <div class="well">
+          {{#each topics}}
+          <div class="radio">
+            <label><input type="radio" name="topicID" value="{{this.id}}">{{this.title}}</label>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <!-- Decription -->
+      <div class="col-md-6">
+        <label for="templates">Description</label>
+        <p>
+          description of topic
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4 col-centered">
+         <input class="btn btn-lg btn-danger" type="submit" value="Select">
+      </div>
+    </div>
+  </form>
+</div>

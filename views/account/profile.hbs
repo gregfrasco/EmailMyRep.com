@@ -1,0 +1,147 @@
+<div class="container" ng-controller="UserProfileCtrl" ng-cloak>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="page-header">
+        <h3>Profile Information</h3>
+      </div>
+      <form action="/account/profile" method="POST" class="form-horizontal" name="profileForm">
+        <input type="hidden" name="_csrf" value="{{_csrf}}"/>
+        <div class="form-group">
+          <label for="email" class="col-sm-4 control-label">Email</label>
+          <div class="col-sm-6">
+            <input type="email" name="email" id="email" value="{{user.email}}" class="form-control" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name" class="col-sm-4 control-label">Name</label>
+          <div class="col-sm-6">
+            <input type="text" name="name" id="name" value="{{user.profile.name}}" class="form-control" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="addressLine1" class="col-sm-4 control-label">Address Line 1</label>
+          <div class="col-sm-6">
+            <input type="text" name="addressLine1" id="addressLine1" value="{{user.profile.addressLine1}}" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="addressLine2" class="col-sm-4 control-label">Address Line 2</label>
+          <div class="col-sm-6">
+            <input type="text" name="addressLine2" id="addressLine2" value="{{user.profile.addressLine2}}" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="city" class="col-sm-4 control-label">City</label>
+          <div class="col-sm-6">
+            <input type="text" name="city" id="city" value="{{user.profile.city}}" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="state" class="col-sm-4 control-label">State</label>
+          <div class="col-sm-6">
+            <input type="text" name="state" id="state" value="{{user.profile.state}}" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="zip" class="col-sm-4 control-label">Zip</label>
+          <div class="col-sm-6">
+            <input type="text" name="zip" id="zip" value="{{user.profile.zip}}" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="col-sm-4 control-label">Phone</label>
+          <div class="col-sm-6">
+            <input type="text" name="phone" id="phone" value="{{user.profile.phone}}" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-6">
+            <button type="submit" class="btn btn btn-primary" ng-disabled="profileForm.$invalid">
+              <i class="fa fa-pencil"></i> Update Profile
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-6 linked-accounts">
+      <div class="page-header">
+        <h3>Linked Accounts</h3>
+      </div>
+
+      {{#if user.googleId}}
+        <p><a href="/account/unlink/google" class="text-danger">Unlink your Google account</a></p>
+      {{else}}
+        <p><a href="/auth/google">Link your Google account</a></p>
+      {{/if}}
+
+      {{#if user.facebookId}}
+        <p><a href="/account/unlink/facebook" class="text-danger">Unlink your Facebook account</a></p>
+      {{else}}
+        <p><a href="/auth/facebook">Link your Facebook account</a></p>
+      {{/if}}
+
+      {{#if user.twitterId}}
+        <p><a href="/account/unlink/twitter" class="text-danger">Unlink your Twitter account</a></p>
+      {{else}}
+        <p><a href="/auth/twitter">Link your Twitter account</a></p>
+      {{/if}}
+
+      {{#if user.githubId }}
+        <p><a href="/account/unlink/github" class="text-danger">Unlink your GitHub account</a></p>
+      {{else}}
+        <p><a href="/auth/github">Link your GitHub account</a></p>
+      {{/if}}
+
+      {{#if user.linkedInId }}
+        <p><a href="/account/unlink/linkedIn" class="text-danger">Unlink your LinkedIn account</a></p>
+      {{else}}
+        <p><a href="/auth/linkedin">Link your LinkedIn account</a></p>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="page-header">
+        <h3>Change Password</h3>
+      </div>
+
+      <form action="/account/password" method="POST" class="form-horizontal" novalidate name="pswForm">
+        <input type="hidden" name="_csrf" value="{{_csrf}}"/>
+        <div class="form-group">
+          <label for="password" class="col-sm-4 control-label">New Password</label>
+          <div class="col-sm-6">
+            <input type="password" name="password" id="password" class="form-control" ng-model="pswChange.psw" required ng-minlength="4"/>
+            <div password-strength value="pswChange.psw"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword" class="col-sm-4 control-label">Confirm Password</label>
+          <div class="col-sm-6">
+            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" ng-model="pswChange.psw1" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-6">
+            <button type="submit" class="btn btn btn-primary" ng-disabled="pswForm.$invalid || pswChange.psw != pswChange.psw1">
+              <i class="fa fa-lock"></i> Change Password
+            </button>
+          </div>
+        </div>
+      </form>
+      </div>
+
+
+    <div class="col-sm-6">
+      <form action="/account/delete" method="POST" class="form-horizontal">
+      <div class="page-header">
+        <h3>Delete Account</h3>
+      </div>
+      <p>You can delete your account, but keep in mind this action is irreversible.</p>
+      <button class="btn btn-danger">
+        <i class="fa fa-trash"></i> Delete my account
+      </button>
+    </form>
+    </div>
+  </div>
+</div>
