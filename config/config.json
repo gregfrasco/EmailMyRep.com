@@ -1,17 +1,18 @@
 {
   "development": {
-    "username": "emailMyRep",
-    "password": "emailMyRep",
-    "database": "emailMyRep",
-    "port":"5433",
-    "host": "127.0.0.1",
+    "username": "yoxjkheqmhjxpc",
+    "password": "UiOrOvQjruiQjdoXUgJvApopk_",
+    "database": "daukl24u24mkoh",
+    "host": "ec2-107-20-148-211.compute-1.amazonaws.com",
+    "port":"5432",
     "dialect": "postgres"
   },
   "test": {
-    "username": "emailMyRep",
-    "password": "emailMyRep",
-    "database": "emailMyRep",
-    "host": "127.0.0.1",
+    "username": "yoxjkheqmhjxpc",
+    "password": "UiOrOvQjruiQjdoXUgJvApopk_",
+    "database": "daukl24u24mkoh",
+    "host": "ec2-107-20-148-211.compute-1.amazonaws.com",
+    "port":"5432",
     "dialect": "postgres"
   },
   "production": {
