@@ -29,5 +29,6 @@ exports.postTemplate = function(req, res) {
     req.flash('errors', errors);
     return res.redirect('/template');
   }
-  return res.redirect('/email');
+  console.log(req.body);
+  return res.redirect('/email?template=' + req.body.templateID);
 };

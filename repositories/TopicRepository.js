@@ -7,4 +7,7 @@ repo.getTopics = function() {
   return db.Topic.findAll();
 };
 
+repo.getTopicById = function(id) {
+  return db.Topic.findById(id);
+};
 module.exports = repo;
