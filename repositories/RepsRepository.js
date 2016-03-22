@@ -6,3 +6,5 @@ var repo = {};
 repo.getAllReps = function() {
   return db.Rep.findAll();
 };
+
+module.exports = repo;

@@ -4,7 +4,9 @@ var db = require('../models/sequelize');
 var repo = {};
 
 repo.getTopics = function() {
-  return db.Topic.findAll();
+  return db.Topic.findAll({
+    order: [['title', 'ASC']],
+  });
 };
 
 repo.getTopicById = function(id) {

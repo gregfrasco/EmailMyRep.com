@@ -24,11 +24,10 @@ exports.getTemplate = function(req, res) {
  * Send template to Template Page (until next page is configured)
  */
 exports.postTemplate = function(req, res) {
-  var errors = req.validationErrors();
-  if (errors) {
-    req.flash('errors', errors);
+  if(req.body.templateID == undefined){
+    req.flash('errors',{ msg: 'Please select a template'});
     return res.redirect('/template');
-  }
-  console.log(req.body);
+  } else {
   return res.redirect('/email?template=' + req.body.templateID);
+}
 };

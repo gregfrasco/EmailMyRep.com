@@ -23,9 +23,8 @@ exports.getTopic = function(req, res) {
 * Send topic to Templete Page
 */
 exports.postTopic = function(req, res) {
-  var errors = req.validationErrors();
-  if (errors) {
-    req.flash('errors', errors);
+  if(req.body.topicID == undefined){
+    req.flash('errors',{ msg: 'Please select a topic'});
     return res.redirect('/topic');
   } else {
     return res.redirect('/template?topic=' + req.body.topicID);
