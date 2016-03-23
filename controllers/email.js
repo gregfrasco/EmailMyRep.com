@@ -19,7 +19,8 @@ exports.getEmail = function(req, res) {
         //Get Reps
         RepRepo.getAllReps().then(function(reps){
           //Render Email
-          console.log(reps);
+          //TESTING
+          RepRepo.getRepsByAddress('02118');
           return res.render('email.hbs', {
             template: template,
             topic: topics,
