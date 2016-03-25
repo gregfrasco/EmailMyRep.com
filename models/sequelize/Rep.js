@@ -2,14 +2,10 @@
 
 module.exports = function(db, DataTypes) {
     var Rep = db.define('Rep', {
-        id: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
         },
         addressLine1: {
             type: DataTypes.STRING,
@@ -52,6 +48,10 @@ module.exports = function(db, DataTypes) {
             allowNull: true
         },
         email:{
+          type: DataTypes.STRING,
+          allowNull: true
+        },
+        role:{
           type: DataTypes.STRING,
           allowNull: true
         }

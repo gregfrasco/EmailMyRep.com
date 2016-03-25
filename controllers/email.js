@@ -17,9 +17,8 @@ exports.getEmail = function(req, res) {
       TopicRepo.getTopicById(template.TopicId).then(function(topics){
         topics = topics.dataValues;
         //Get Reps
-        RepRepo.getAllReps().then(function(reps){
+        RepRepo.getAllRepswithEmails().then(function(reps){
           //Render Email
-          //TESTING
           RepRepo.getRepsByAddress('02118');
           return res.render('email.hbs', {
             template: template,

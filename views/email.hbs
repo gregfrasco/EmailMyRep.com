@@ -21,40 +21,54 @@
       <!-- repsetivies -->
       <div class="col-md-6">
         <label for="Reps">Representatives</label>
-            <div class="well" style="max-height: 300px;overflow: auto;">
-        		<ul class="list-group checked-list-box">
-              {{#each reps}}
-                  <li class="list-group-item">
-                    <input type="checkbox" class="btn btn-primary" data-toggle="button" name="{{this.id}}">
-                    {{this.name}}
-                  </input></li>
-              {{/each}}
-                </ul>
-            </div>
-        </div>
-
-
-
-
-
-
-<!--
-
-
-        <div class="well">
-          <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary active">
-   <input type="checkbox" autocomplete="off" checked> Checkbox 1 (pre-checked)
- </label>
-            <ul class="list-group">
-              <li class="list-group-item"><label class="btn btn-primary"><input type="checkbox" value="Obama"><img src="#" /> Presdent: Obama</li></label>
-              <li class="list-group-item"><input type="checkbox" value="Warren"><img src="#" /> Senator: Elizabeth Warren</li>
-              <li class="list-group-item"><input type="checkbox" value="Markey"><img src="#" /> Senator: Ed Markey</li>
-            </ul>
-          </div>
+        <div class="well" style="max-height: 300px;overflow: auto;">
+          <ul class="list-group checked-list-box">
+            {{#each reps}}
+            <li class="list-group-item">
+              {{#if this.photoUrl}}
+              <div class="row">
+                <div class="col-md-1">
+                  <input type="checkbox" class="btn btn-primary" data-toggle="button" name="{{this.id}}">
+                </div>
+                <div class="col-md-2">
+                  <img src="{{this.photoUrl}}" class="img-circle img-responsive" style="width:50px;height:50px;object-fit: cover;"/>
+                </div>
+                <div class="col-md-9">
+                  {{this.name}}
+                </div>
+              </div>
+              {{else}}
+              <input type="checkbox" class="btn btn-primary" data-toggle="button" name="{{this.id}}">
+              {{this.name}}
+              {{/if}}
+            </li>
+            {{/each}}
+          </ul>
         </div>
       </div>
-    -->
+
+
+
+
+
+
+      <!--
+
+
+      <div class="well">
+      <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active">
+      <input type="checkbox" autocomplete="off" checked> Checkbox 1 (pre-checked)
+    </label>
+    <ul class="list-group">
+    <li class="list-group-item"><label class="btn btn-primary"><input type="checkbox" value="Obama"><img src="#" /> Presdent: Obama</li></label>
+    <li class="list-group-item"><input type="checkbox" value="Warren"><img src="#" /> Senator: Elizabeth Warren</li>
+    <li class="list-group-item"><input type="checkbox" value="Markey"><img src="#" /> Senator: Ed Markey</li>
+  </ul>
 </div>
-  </form>
+</div>
+</div>
+-->
+</div>
+</form>
 </div>
