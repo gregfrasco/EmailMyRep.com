@@ -16,20 +16,23 @@ exports.getEmail = function(req, res) {
       //Get Topic
       TopicRepo.getTopicById(template.TopicId).then(function(topics){
         topics = topics.dataValues;
-        //Get Reps
+        //Get Reps with Emails
         RepRepo.getAllRepswithEmails().then(function(reps){
+          //Get Reps without Emails
+          RepRepo.getAllRepswithoutEmails().then(function(otherReps){
           //Render Email
           RepRepo.getRepsByAddress('02118');
           return res.render('email.hbs', {
             template: template,
             topic: topics,
-            reps: reps
+            reps: reps,
+            otherReps: otherReps
           });
         });
-
       });
     });
-  }else {
+    });
+  } else {
     req.flash('errors',{ msg: 'You must be logged in to do this'});
     return res.redirect('/account');
   }

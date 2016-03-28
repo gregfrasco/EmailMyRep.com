@@ -16,6 +16,10 @@ repo.getAllRepswithEmails = function() {
 });
 };
 
+repo.getAllRepswithoutEmails = function() {
+  return db.Rep.findAll({ where: { email: null }});
+};
+
 repo.getRepsByAddress = function(address){
   var url = 'https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyC8KEqbkmVof1Np-PTr51xOIhpTKiDIY74&address=' + address;
   http.get(url, function(res){
