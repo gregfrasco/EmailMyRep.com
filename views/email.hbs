@@ -31,15 +31,17 @@
                   <input type="checkbox" class="btn btn-primary" data-toggle="button" name="{{this.id}}">
                 </div>
                 <div class="col-md-2">
-                  <img src="{{this.photoUrl}}" class="img-circle img-responsive" style="width:50px;height:50px;object-fit: cover;"/>
+                  <img src="{{this.photoUrl}}" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
                 </div>
                 <div class="col-md-9">
-                  {{this.name}}
+                  <h2>{{this.name}}</h2>
+                  {{this.role}}
                 </div>
               </div>
               {{else}}
               <input type="checkbox" class="btn btn-primary" data-toggle="button" name="{{this.id}}">
-              {{this.name}}
+              <h2>{{this.name}}</h2>
+              {{this.role}}
               {{/if}}
             </li>
             {{/each}}
