@@ -6,6 +6,7 @@ var passport = require('passport');
 
 var UserRepo = require('../repositories/UserRepository.js');
 var emailService = require('../services/emailService.js');
+var RepRepo = require('../repositories/RepsRepository.js');
 
 
 exports.getLogin = function(req, res) {
@@ -102,6 +103,7 @@ exports.postUpdateProfile = function(req, res) {
     .then(function() {
       req.flash('success', { msg: 'Profile information updated.' });
       res.redirect('/account');
+      RepRepo.getRepsByAddress(req.user.profile.zip);
     })
     .catch(function(err) {
       req.flash('errors', { msg: err });
