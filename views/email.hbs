@@ -39,9 +39,18 @@
                 </div>
               </div>
               {{else}}
-              <input type="checkbox" class="btn btn-primary" data-toggle="button" name="{{this.id}}">
-              <h2>{{this.name}}</h2>
-              {{this.role}}
+              <div class="row">
+                <div class="col-md-1">
+                  <input type="checkbox" class="btn btn-primary" data-toggle="button" name="{{this.id}}">
+                </div>
+                <div class="col-md-2">
+                  <img src="images/default-avatar.jpg" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                </div>
+                <div class="col-md-9">
+                  <h2>{{this.name}}</h2>
+                  {{this.role}}
+                </div>
+              </div>
               {{/if}}
             </li>
             {{/each}}
