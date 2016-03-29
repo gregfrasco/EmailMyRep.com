@@ -1,17 +1,25 @@
 "use strict";
 
 var TopicRepo = require('../repositories/TopicRepository.js');
+var RepRepo = require('../repositories/RepsRepository.js');
 /**
 * Get /topic
 * Select A Topic
 */
 exports.getTopic = function(req, res) {
   if (req.user){
-    TopicRepo.getTopics().then(function(topics){
-      return res.render('topic.hbs', {
-        topics: topics
+    if(req.user.profile.zip){
+      RepRepo.clearReps();
+      RepRepo.getAllRepswithEmails(req.user.profile.zip);
+      TopicRepo.getTopics().then(function(topics){
+        return res.render('topic.hbs', {
+          topics: topics
+        });
       });
-    });
+    } else {
+      req.flash('errors',{ msg: 'You must have a zip code added'});
+      return res.redirect('/account');
+    }
   } else {
     req.flash('errors',{ msg: 'You must be logged in to do this'});
     return res.redirect('/account');

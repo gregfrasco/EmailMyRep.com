@@ -98,12 +98,12 @@ exports.getAccount = function(req, res) {
 
 exports.postUpdateProfile = function(req, res) {
   req.assert('email', 'Email is not valid').isEmail();
-
   UserRepo.changeProfileData(req.user.id, req.body)
     .then(function() {
       req.flash('success', { msg: 'Profile information updated.' });
+      RepRepo.addRepsByAddress(req.user.profile.zip);
       res.redirect('/account');
-      RepRepo.getRepsByAddress(req.user.profile.zip);
+
     })
     .catch(function(err) {
       req.flash('errors', { msg: err });
