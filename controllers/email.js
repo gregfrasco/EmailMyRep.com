@@ -38,6 +38,11 @@ exports.getEmail = function(req, res) {
 * Send email through server
 */
 exports.postEmail = function(req, res) {
+  console.log(req.body);
+  if(req.body.g-recaptcha-response){
+    req.flash('errors', 'ARE YOU HUMAN');
+    return res.redirect('/email');
+  }
   var errors = req.validationErrors();
   if (errors) {
     req.flash('errors', errors);

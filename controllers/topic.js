@@ -9,13 +9,23 @@ var RepRepo = require('../repositories/RepsRepository.js');
 exports.getTopic = function(req, res) {
   if (req.user){
     if(req.user.profile.zip){
-      RepRepo.clearReps();
-      RepRepo.getAllRepswithEmails(req.user.profile.zip);
-      TopicRepo.getTopics().then(function(topics){
-        return res.render('topic.hbs', {
-          topics: topics
-        });
-      });
+      if(req.user.profile.name){
+        if(req.user.email){
+          RepRepo.clearReps();
+          RepRepo.getAllRepswithEmails(req.user.profile.zip);
+          TopicRepo.getTopics().then(function(topics){
+            return res.render('topic.hbs', {
+              topics: topics
+            });
+          });
+        } else {
+          req.flash('errors',{ msg: 'You must have a email added'});
+          return res.redirect('/account');
+        }
+      } else {
+        req.flash('errors',{ msg: 'You must have a name added'});
+        return res.redirect('/account');
+      }
     } else {
       req.flash('errors',{ msg: 'You must have a zip code added'});
       return res.redirect('/account');

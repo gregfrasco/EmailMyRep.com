@@ -78,6 +78,7 @@ $(function () {
   });
 });
 </script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <style>
 /* CSS REQUIRED */
 .state-icon {
@@ -92,8 +93,15 @@ $(function () {
   <form method="POST" action="/email" name="emailForm">
     <input type="hidden" name="_csrf" value="{{_csrf}}"/>
     <div class="row">
-      <h1 class="col-md-11 pull-left">Write an Email</h1>
-      <button type="submit" class="btn btn-primary col-md-1 pull-right">Send</button>
+      <div class="col-md-6">
+        <h1>Write an Email</h1>
+      </div>
+      <div class="col-md-4">
+        <div class="col-md-1 g-recaptcha" data-sitekey="6LehCRwTAAAAAA1BuVP_g8AXHu1TEPX9iSRT6ae2"></div>
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary btn-block">Send</button>
+      </div>
     </div>
     <div class="row">
       <hr />
@@ -182,29 +190,6 @@ $(function () {
         </ul>
       </div>
       </div>
-
-
-
-
-
-
-      <!--
-
-
-      <div class="well">
-      <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-primary active">
-      <input type="checkbox" autocomplete="off" checked> Checkbox 1 (pre-checked)
-    </label>
-    <ul class="list-group">
-    <li class="list-group-item"><label class="btn btn-primary"><input type="checkbox" value="Obama"><img src="#" /> Presdent: Obama</li></label>
-    <li class="list-group-item"><input type="checkbox" value="Warren"><img src="#" /> Senator: Elizabeth Warren</li>
-    <li class="list-group-item"><input type="checkbox" value="Markey"><img src="#" /> Senator: Ed Markey</li>
-  </ul>
-</div>
-</div>
-</div>
--->
 </div>
 </form>
 </div>
