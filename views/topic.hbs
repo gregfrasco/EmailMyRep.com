@@ -3,6 +3,12 @@
   text-align: center;
 }
 </style>
+<script>
+function changeText(newText)
+{
+  document.getElementById('description').value = newText;
+}
+</script>
 <div class="container">
   <form method="POST" action="/topic" name="topicForm">
     <input type="hidden" name="_csrf" value="{{_csrf}}"/>
@@ -19,17 +25,16 @@
         <div class="well">
           {{#each topics}}
           <div class="radio">
-            <label><input type="radio" name="topicID" value="{{this.id}}">{{this.title}}</label>
+            <label><input type="radio" name="topicID" onclick="changeText('{{this.description}}');" value="{{this.id}}">{{this.title}}</label>
           </div>
           {{/each}}
         </div>
       </div>
       <!-- Decription -->
       <div class="col-md-6">
-        <label for="templates">Description</label>
-        <p>
-          description of topic
-        </p>
+        <label for="templates">Description</label><br />
+        <textarea rows="10" cols="50" style="resize: none; border: none; outline: none; background-color: transparent; font-family: inherit; font-size: inherit;" type="text" name="doc-title" value="" id="description" autocomplete="off">
+        </textarea>
       </div>
     </div>
     <div class="row">

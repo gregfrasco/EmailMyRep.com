@@ -3,6 +3,15 @@
   text-align: center;
 }
 </style>
+<script>
+function changeText(newText,newTemp) {
+  /*if(newTemp === '""'){
+    document.getElementById('template').type = "hidden";
+  }*/
+  document.getElementById('description').value = newText;
+  document.getElementById('template').value = newTemp;
+}
+</script>
 <div class="container">
   <form method="POST" action="/template" name="templateForm">
     <input type="hidden" name="_csrf" value="{{_csrf}}"/>
@@ -19,21 +28,19 @@
         <div class="well">
           {{#each templates}}
           <div class="radio">
-            <label><input type="radio" name="templateID" value="{{this.id}}">{{this.title}}</label>
+            <label><input type="radio" name="templateID" onclick="changeText('{{this.description}}','{{this.template}}');" value="{{this.id}}">{{this.title}}</label>
           </div>
           {{/each}}
         </div>
       </div>
       <!-- Decription -->
       <div class="col-md-6">
-        <label for="templates">Title</label>
-        <p>
-          description of template
-        </p>
+        <textarea rows="3" cols="50" style="resize: none; border: none; outline: none; background-color: transparent; font-family: inherit; font-size: inherit;" type="text" name="doc-title" value="" id="description" autocomplete="off">
+        </textarea>
         <hr />
-        <p>
-          Actual Template
-        </p>
+        <label for="templates">Template</label><br />
+        <textarea rows="10" cols="50" style="resize: none; border: none; outline: none; background-color: transparent; font-family: inherit; font-size: inherit;" type="text" name="doc-title" value="" id="template" autocomplete="off">
+        </textarea>
       </div>
     </div>
     <div class="row">
