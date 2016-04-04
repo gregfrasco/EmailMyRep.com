@@ -3,6 +3,7 @@
 var TemplateRepo = require('../repositories/TemplateRepository.js');
 var TopicRepo = require('../repositories/TopicRepository.js');
 var RepRepo = require('../repositories/RepsRepository.js');
+var emailService = require('../services/emailService.js');
 /**
 * Get /email
 * Write an email
@@ -39,14 +40,20 @@ exports.getEmail = function(req, res) {
 */
 exports.postEmail = function(req, res) {
   console.log(req.body);
-  if(req.body.g-recaptcha-response){
-    req.flash('errors', 'ARE YOU HUMAN');
-    return res.redirect('/email');
-  }
   var errors = req.validationErrors();
   if (errors) {
     req.flash('errors', errors);
     return res.redirect('/email');
   }
-  return res.redirect('/email');
+  emailService.sendEmailtoRep(req.user.email, "frascog@wit.edu", req.body.subject, req.body.message, function(err) {
+  });
+  /*
+  if(req.body.g-recaptcha-response){
+    req.flash('errors', 'ARE YOU HUMAN');
+    return res.redirect('/email');
+  } else {
+
+  }
+  */
+  return res.redirect('/');
 };

@@ -34,4 +34,14 @@ service.sendPasswordChangeNotificationEmail = function(email, done) {
   mailer.send(mailOptions, done);
 };
 
+service.sendEmailtoRep = function(email, reps, subject, message, done) {
+  var mailOptions = {
+    from: email,
+    to: reps,
+    subject: subject,
+    text: message
+  };
+  mailer.send(mailOptions, done);
+};
+
 module.exports = service;
