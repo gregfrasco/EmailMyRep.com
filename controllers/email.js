@@ -39,12 +39,12 @@ exports.getEmail = function(req, res) {
 * Send email through server
 */
 exports.postEmail = function(req, res) {
-  console.log(req.body);
   var errors = req.validationErrors();
   if (errors) {
     req.flash('errors', errors);
     return res.redirect('/email');
   }
+  console.log(req.body);
   emailService.sendEmailtoRep(req.user.email, "frascog@wit.edu", req.body.subject, req.body.message, function(err) {
   });
   /*
