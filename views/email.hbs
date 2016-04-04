@@ -127,9 +127,18 @@ $(function () {
               {{#if this.photoUrl}}
               <div class="row">
                 <span class="button-checkbox">
+                  {{#equal this.party "Democratic"}}
                   <button type="button" class="btn col-md-12" data-color="primary">
+                  {{else equal this.party "Republican"}}
+                  <button type="button" class="btn col-md-12" data-color="danger">
+                    {{else}}
+                    <button type="button" class="btn col-md-12" data-color="success">
+                  {{/equal}}
                     <div class="col-md-3">
-                      <img src="{{this.photoUrl}}" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                      <center>
+                        <img src="{{this.photoUrl}}" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                        ( {{this.party}} )
+                      </center>
                     </div>
                     <div class="col-md-8">
                       <h3>{{this.name}}</h3>
@@ -142,9 +151,18 @@ $(function () {
               {{else}}
               <div class="row">
                 <span class="button-checkbox">
+                  {{#equal this.party "Democratic"}}
                   <button type="button" class="btn col-md-12" data-color="primary">
+                  {{else equal this.party "Republican"}}
+                  <button type="button" class="btn col-md-12" data-color="danger">
+                    {{else}}
+                    <button type="button" class="btn col-md-12" data-color="success">
+                  {{/equal}}
                     <div class="col-md-3">
-                      <img src="images/default-avatar.jpg" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                      <center>
+                        <img src="images/default-avatar.jpg" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                        ( {{this.party}} )
+                      </center>
                     </div>
                     <div class="col-md-8">
                       <h3>{{this.name}}</h3>
@@ -166,11 +184,19 @@ $(function () {
             {{#each reps}}
             {{#if this.email}}
             {{else}}
-            <li class="list-group-item">
+            {{#equal this.party "Democratic"}}
+            <li class="list-group-item list-group-item-info">
+            {{else equal this.party "Republican"}}
+            <li class="list-group-item list-group-item-danger">
+              {{else}}
+              <li class="list-group-item">
+            {{/equal}}
+
               {{#if this.photoUrl}}
               <div class="row">
                 <div class="col-md-3">
                   <img src="{{this.photoUrl}}" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                  ( {{this.party}} )
                 </div>
                 <div class="col-md-9">
                   <h3>{{this.name}}</h3>
@@ -184,6 +210,7 @@ $(function () {
               <div class="row">
                 <div class="col-md-3">
                   <img src="images/default-avatar.jpg" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                  ( {{this.party}} )
                 </div>
                 <div class="col-md-9">
                   <h2>{{this.name}}</h2>
