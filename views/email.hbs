@@ -136,137 +136,137 @@ $(function () {
                       {{this.role}}
                     </div>
                   </button>
-                    <input type="checkbox" class="hidden" />
-                  </span>
-                </div>
-                {{else}}
-                <div class="row">
-                  <span class="button-checkbox">
-                    <button type="button" class="btn col-md-12" data-color="primary">
-                      <div class="col-md-3">
-<img src="images/default-avatar.jpg" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
-                      </div>
-                      <div class="col-md-8">
-                        <h3>{{this.name}}</h3>
-                        {{this.role}}
-                      </div>
-                    </button>
-                      <input type="checkbox" class="hidden" />
-                    </span>
-                  </div>
-                {{/if}}
-              </li>
-              {{/if}}
-              {{/each}}
-            </ul>
-          </div>
-          <label for="Reps">Representatives without emails addresses</label>
-          <div class="well" style="max-height: 300px;overflow: auto;">
-            <ul class="list-group">
-              {{#each reps}}
-              {{#if this.email}}
+                  <input type="checkbox" name="emails" value="{{this.email}}" class="hidden" />
+                </span>
+              </div>
               {{else}}
-              <li class="list-group-item">
-                {{#if this.photoUrl}}
-                <div class="row">
-                  <div class="col-md-3">
-                    <img src="{{this.photoUrl}}" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
-                  </div>
-                  <div class="col-md-9">
-                    <h3>{{this.name}}</h3>
-                    {{this.role}}
-                    {{#if this.website}}
-                    <br />Contact them on: <a href="{{this.website}}">{{this.website}}</a>
-                    {{/if}}
-                  </div>
-                </div>
-                {{else}}
-                <div class="row">
-                  <div class="col-md-3">
-                    <img src="images/default-avatar.jpg" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
-                  </div>
-                  <div class="col-md-9">
-                    <h2>{{this.name}}</h2>
-                    {{this.role}}
-                    {{#if this.website}}
-                    <br />Contact them on: <a href="{{this.website}}">{{this.website}}</a>
-                    {{/if}}
-                  </div>
-                </div>
-                {{/if}}
-              </li>
+              <div class="row">
+                <span class="button-checkbox">
+                  <button type="button" class="btn col-md-12" data-color="primary">
+                    <div class="col-md-3">
+                      <img src="images/default-avatar.jpg" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                    </div>
+                    <div class="col-md-8">
+                      <h3>{{this.name}}</h3>
+                      {{this.role}}
+                    </div>
+                  </button>
+                  <input type="checkbox" name="emails" value="{{this.email}}" class="hidden" />
+                </span>
+              </div>
               {{/if}}
-              {{/each}}
-            </ul>
-          </div>
+            </li>
+            {{/if}}
+            {{/each}}
+          </ul>
+        </div>
+        <label for="Reps">Representatives without emails addresses</label>
+        <div class="well" style="max-height: 300px;overflow: auto;">
+          <ul class="list-group">
+            {{#each reps}}
+            {{#if this.email}}
+            {{else}}
+            <li class="list-group-item">
+              {{#if this.photoUrl}}
+              <div class="row">
+                <div class="col-md-3">
+                  <img src="{{this.photoUrl}}" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                </div>
+                <div class="col-md-9">
+                  <h3>{{this.name}}</h3>
+                  {{this.role}}
+                  {{#if this.website}}
+                  <br />Contact them on: <a href="{{this.website}}">{{this.website}}</a>
+                  {{/if}}
+                </div>
+              </div>
+              {{else}}
+              <div class="row">
+                <div class="col-md-3">
+                  <img src="images/default-avatar.jpg" class="img-circle img-responsive" style="width:75px;height:75px;object-fit: cover;"/>
+                </div>
+                <div class="col-md-9">
+                  <h2>{{this.name}}</h2>
+                  {{this.role}}
+                  {{#if this.website}}
+                  <br />Contact them on: <a href="{{this.website}}">{{this.website}}</a>
+                  {{/if}}
+                </div>
+              </div>
+              {{/if}}
+            </li>
+            {{/if}}
+            {{/each}}
+          </ul>
         </div>
       </div>
-    </form>
-    <script>
-    $(function () {
-      $('.button-checkbox').each(function () {
+    </div>
+  </form>
+  <script>
+  $(function () {
+    $('.button-checkbox').each(function () {
 
-        // Settings
-        var $widget = $(this),
-        $button = $widget.find('button'),
-        $checkbox = $widget.find('input:checkbox'),
-        color = $button.data('color'),
-        settings = {
-          on: {
-            icon: 'glyphicon glyphicon-check'
-          },
-          off: {
-            icon: 'glyphicon glyphicon-unchecked'
-          }
-        };
-
-        // Event Handlers
-        $button.on('click', function () {
-          $checkbox.prop('checked', !$checkbox.is(':checked'));
-          $checkbox.triggerHandler('change');
-          updateDisplay();
-        });
-        $checkbox.on('change', function () {
-          updateDisplay();
-        });
-
-        // Actions
-        function updateDisplay() {
-          var isChecked = $checkbox.is(':checked');
-
-          // Set the button's state
-          $button.data('state', (isChecked) ? "on" : "off");
-
-          // Set the button's icon
-          $button.find('.state-icon')
-          .removeClass()
-          .addClass('state-icon ' + settings[$button.data('state')].icon);
-
-          // Update the button's color
-          if (isChecked) {
-            $button
-            .removeClass('btn-default')
-            .addClass('btn-' + color + ' active');
-          }
-          else {
-            $button
-            .removeClass('btn-' + color + ' active')
-            .addClass('btn-default');
-          }
+      // Settings
+      var $widget = $(this),
+      $button = $widget.find('button'),
+      $checkbox = $widget.find('input:checkbox'),
+      color = $button.data('color'),
+      settings = {
+        on: {
+          icon: 'glyphicon glyphicon-check'
+        },
+        off: {
+          icon: 'glyphicon glyphicon-unchecked'
         }
+      };
 
-        // Initialization
-        function init() {
-
-          updateDisplay();
-
-          // Inject the icon if applicable
-          if ($button.find('.state-icon').length == 0) {
-            $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
-          }
-        }
-        init();
+      // Event Handlers
+      $button.on('click', function () {
+        $checkbox.prop('checked', !$checkbox.is(':checked'));
+        $checkbox.triggerHandler('change');
+        updateDisplay();
       });
+      $checkbox.on('change', function () {
+        updateDisplay();
+      });
+
+      // Actions
+      function updateDisplay() {
+        var isChecked = $checkbox.is(':checked');
+
+        // Set the button's state
+        $button.data('state', (isChecked) ? "on" : "off");
+
+        // Set the button's icon
+        $button.find('.state-icon')
+        .removeClass()
+        .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+        // Update the button's color
+        if (isChecked) {
+          $button
+          .removeClass('btn-default')
+          .addClass('btn-' + color + ' active');
+        }
+        else {
+          $button
+          .removeClass('btn-' + color + ' active')
+          .addClass('btn-default');
+        }
+      }
+
+      // Initialization
+      function init() {
+
+        updateDisplay();
+
+        // Inject the icon if applicable
+        if ($button.find('.state-icon').length == 0) {
+          $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+        }
+      }
+      init();
     });
-    </script>
-  </div>
+  });
+  </script>
+</div>
