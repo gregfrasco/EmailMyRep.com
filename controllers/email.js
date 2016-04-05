@@ -2,15 +2,18 @@
 
 var TemplateRepo = require('../repositories/TemplateRepository.js');
 var TopicRepo = require('../repositories/TopicRepository.js');
+var EmailRepo = require('../repositories/EmailRepository.js');
 var RepRepo = require('../repositories/RepsRepository.js');
 var emailService = require('../services/emailService.js');
+
+var templateID = 0;
 /**
 * Get /email
 * Write an email
 */
 exports.getEmail = function(req, res) {
   if (req.user){
-    var templateID = req.query.template;
+    templateID = req.query.template;
     //Get template
     TemplateRepo.getTemplatesById(templateID).then(function(template){
       template = template.dataValues;
@@ -39,14 +42,20 @@ exports.getEmail = function(req, res) {
 * Send email through server
 */
 exports.postEmail = function(req, res) {
-  var errors = req.validationErrors();
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/email');
+  var allEmails = [];
+  if(req.body.emails == undefined){
+    allEmails = [req.user.email];
+  }else{
+    allEmails.push(req.body.emails);
+    allEmails.push(req.user.email);
   }
-  console.log(req.body);
-  emailService.sendEmailtoRep(req.user.email, "frascog@wit.edu", req.body.subject, req.body.message, function(err) {
+  var i = 0;
+  for(i = 0; i < allEmails.length; i++){
+    emailService.sendEmailtoRep(req.user.email, "frascog17@gmail.com", req.body.subject, req.body.message +" "+allEmails[i], function(err) {
   });
+}
+EmailRepo.addEmail(allEmails,req.body.message,req.body.subject,templateID,req.user.ID);
+
   /*
   if(req.body.g-recaptcha-response){
     req.flash('errors', 'ARE YOU HUMAN');

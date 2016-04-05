@@ -2,7 +2,6 @@
 
 var secrets = require('../config/secrets');
 var mailer = require('sendgrid')(secrets.sendgrid.api_key);
-
 var service = {};
 
 var applicationName = 'Express Starter';

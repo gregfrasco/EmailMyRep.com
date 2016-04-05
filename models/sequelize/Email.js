@@ -3,16 +3,17 @@
 module.exports = function(db, DataTypes) {
     var Email = db.define('Email', {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         subject: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         message: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(10000),
             allowNull: false,
         }
     }, {
