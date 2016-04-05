@@ -259,3 +259,9 @@ exports.postForgot = function(req, res, next) {
     res.redirect('/forgot');
   });
 };
+
+exports.getEmails = function(req, res) {
+  res.render('account/emails', {
+    title: 'Account Management'
+  });
+};
