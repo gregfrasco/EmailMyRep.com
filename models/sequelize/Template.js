@@ -20,12 +20,7 @@ module.exports = function(db, DataTypes) {
     }
   },{
     tableName: 'Templates',
-    timestamps: true,
-    classMethods: {
-      associate: function(models) {
-        Template.hasMany(models.Email);
-      }
-    }
+    timestamps: false,
   });
   return Template;
 };

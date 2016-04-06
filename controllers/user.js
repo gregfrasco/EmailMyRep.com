@@ -7,7 +7,7 @@ var passport = require('passport');
 var UserRepo = require('../repositories/UserRepository.js');
 var emailService = require('../services/emailService.js');
 var RepRepo = require('../repositories/RepsRepository.js');
-
+var EmailRepo = require('../repositories/EmailRepository.js');
 
 exports.getLogin = function(req, res) {
   if (req.user)
@@ -261,7 +261,13 @@ exports.postForgot = function(req, res, next) {
 };
 
 exports.getEmails = function(req, res) {
-  res.render('account/emails', {
-    title: 'Account Management'
+  EmailRepo.getEmails(req.user).then(function(emails){
+    console.log('THIS ONE GREG');
+    console.log(emails);
+    res.render('account/emails', {
+      title: 'My Emails',
+      emails: emails
+    });
   });
+
 };

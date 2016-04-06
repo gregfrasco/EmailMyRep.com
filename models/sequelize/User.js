@@ -59,9 +59,6 @@ module.exports = function(db, DataTypes) {
   }, {
     tableName: 'Users',
     classMethods: {
-      associate: function(models) {
-        User.hasMany(models.Email);
-      },
       encryptPassword: function(password, cb) {
         if (!password) {
           cb('', null);

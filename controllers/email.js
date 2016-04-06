@@ -54,7 +54,7 @@ exports.postEmail = function(req, res) {
     emailService.sendEmailtoRep(req.user.email, "frascog17@gmail.com", req.body.subject, req.body.message +" "+allEmails[i], function(err) {
   });
 }
-EmailRepo.addEmail(allEmails,req.body.message,req.body.subject,templateID,req.user.ID);
+EmailRepo.addEmail(allEmails,req.body.message,req.body.subject,templateID,req.user);
 
   /*
   if(req.body.g-recaptcha-response){

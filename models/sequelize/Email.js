@@ -15,6 +15,12 @@ module.exports = function(db, DataTypes) {
         message: {
             type: DataTypes.STRING(10000),
             allowNull: false,
+        },
+        templateId: {
+          type: DataTypes.INTEGER
+        },
+        userId: {
+          type: DataTypes.INTEGER
         }
     }, {
         tableName: 'Emails',

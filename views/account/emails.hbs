@@ -1,3 +1,10 @@
+<script>
+function changeText(subject,message)
+{
+  document.getElementById('subject').value = subject;
+  document.getElementById('message').value = message;
+}
+</script>
 <div class="container">
   <div class="row">
     <h2>My Emails</h2>
@@ -7,22 +14,27 @@
     <div class="col-md-6">
       <h3>Email List</h3>
       <ul class="list-group well">
-        <li class="list-group-item">Email 1</li>
-        <li class="list-group-item">Email 1</li>
-        <li class="list-group-item">Email 1</li>
-        <li class="list-group-item">Email 1</li>
-        <li class="list-group-item">Email 1</li>
+        <form>
+          {{#each emails}}
+          <div class="radio">
+            <label>
+              <input type="radio" onclick="changeText('{{this.subject}}','{{this.message}}');" name="optionsRadios" id="optionsRadios1" value="option1">
+              {{this.subject}}
+            </label>
+          </div>
+          {{/each}}
+        </form>
       </ul>
 
     </div>
     <div class="col-md-6">
       <h3>Email</h3>
       <h5>To:</h5>
-      <h5>Subject:</h5>
+      <label>Subject:</label><span>&#32;</span><input type="text" style="border: none; outline: none; background-color: transparent; font-family: inherit; font-size: inherit;" class="form-group" disabled id="subject" />
       <hr />
-      <p>
-        message
-      </p>
+      <label for="templates">Message:</label><br />
+      <textarea rows="10" cols="50" style="resize: none; border: none; outline: none; background-color: transparent; font-family: inherit; font-size: inherit;" type="text" name="doc-title" value="" id="message" autocomplete="off">
+        </textarea>
     </div>
   </div>
 </div>
