@@ -87,6 +87,10 @@ repo.getAllRepswithoutEmails = function() {
   return db.Rep.findAll({ where: { email: null }});
 };
 
+repo.getRepByEmail = function(email) {
+  return db.Rep.findOne({where:{email: email}});
+};
+
 repo.addRepsByAddress = function(address){
   var url = 'https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyC8KEqbkmVof1Np-PTr51xOIhpTKiDIY74&address=' + address;
   http.get(url, function(res){
