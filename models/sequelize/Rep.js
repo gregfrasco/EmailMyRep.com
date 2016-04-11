@@ -57,12 +57,7 @@ module.exports = function(db, DataTypes) {
         }
     }, {
         tableName: 'Reps',
-        timestamps: true,
-        classMethods: {
-          associate: function(models) {
-            Rep.hasMany(models.RepEmail);
-          }
-        }
+        timestamps: false
     });
     return Rep;
 };

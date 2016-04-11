@@ -2,14 +2,19 @@
 
 module.exports = function(db, DataTypes) {
   var RepEmail = db.define('RepEmail', {
-    id: {
+    emailID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true
+    },
+    RepID: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
     }
   },{
     tableName: 'RepEmails',
-    timestamps: true
+    timestamps: false
   });
   return RepEmail;
 };

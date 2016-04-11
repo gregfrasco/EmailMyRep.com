@@ -24,12 +24,7 @@ module.exports = function(db, DataTypes) {
         }
     }, {
         tableName: 'Emails',
-        timestamps: true,
-        classMethods: {
-          associate: function(models) {
-            Email.hasMany(models.RepEmail);
-          }
-        }
+        timestamps: true
     });
     return Email;
 };

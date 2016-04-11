@@ -5,7 +5,6 @@ var TopicRepo = require('../repositories/TopicRepository.js');
 var EmailRepo = require('../repositories/EmailRepository.js');
 var RepRepo = require('../repositories/RepsRepository.js');
 var emailService = require('../services/emailService.js');
-
 var templateID = 0;
 /**
 * Get /email
@@ -23,6 +22,10 @@ exports.getEmail = function(req, res) {
         //Get Reps with Emails
         var reps = RepRepo.getAllReps();
           //Get Reps without Emails
+          var i = 0;
+          for(i = 0; i < reps.length; i++){
+            RepRepo.addRep(reps[i]);
+          }
           return res.render('email.hbs', {
             template: template,
             topic: topics,
