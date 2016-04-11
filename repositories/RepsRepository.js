@@ -148,7 +148,7 @@ repo.addRepsByAddress = function(address){
 };
 
 repo.addRep = function(rep){
-  db.Rep.findOne({ where: { name: rep.name } })
+  db.Rep.findOne({ where: { email: rep.email } })
   .then(function(isrep) {
     if(isrep != null) {
       throw 'rep exists';

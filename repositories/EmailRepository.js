@@ -22,16 +22,22 @@ repo.addReps = function(emails,message,subject,templateID,user){
     .then(function(Email) {
       var yourEmail = Email.pop().dataValues;
       var i = 0;
-      for(i = 0; i < emails.length - 1;i++){
-      RepRepo.getRepByEmail(emails[i]).then(function(rep){
-        console.log(rep);
-      });
+      for(i = 0; i < (emails[0]).length; i++){
+        console.log('--------------------------------------------------------');
+        console.log((emails[0])[i]);
+        RepRepo.getRepByEmail(emails[i]).then(function(dbRep){
+          var repEmail = new Object();
+          repEmail.emailID = yourEmail.id;
+          repEmail.RepID = dbRep.email;
+          var dbRep = db.RepEmail.build(repEmail);
+          dbRep.save();
+        });
       }
     });
-};
+  };
 
-repo.getEmails= function(user){
-  return db.Email.findAll({ where: { userId: user.id } });
-};
+  repo.getEmails= function(user){
+    return db.Email.findAll({ where: { userId: user.id } });
+  };
 
-module.exports = repo;
+  module.exports = repo;
