@@ -28,7 +28,7 @@ exports.getEmail = function(req, res) {
           }
           EmailRepo.setReps(reps);
           return res.render('email.hbs', {
-            template: template,
+            template: template.template,
             topic: topics,
             reps: reps,
             otherReps: reps
