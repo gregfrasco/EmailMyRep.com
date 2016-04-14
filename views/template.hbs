@@ -28,7 +28,7 @@ function changeText(newText,newTemp) {
         <div class="well">
           {{#each templates}}
           <div class="radio">
-            <input type="radio" name="templateID" onclick="changeText('{{this.description}}','{{this.template}}');" value="{{this.id}}"> {{this.title}}
+            <input type="radio" name="templateID" onclick="changeText('{{this.description}}','{{this.template}}');" value="{{this.id}}" /> <span>{{this.title}}</span>
           </div>
           {{/each}}
         </div>
