@@ -8,14 +8,14 @@ module.exports = function(db, DataTypes) {
       primaryKey: true
     },
     title: {
-      type: DataTypes.STRING(10000),
+      type: DataTypes.STRING,
       allowNull: false
     },
     description: {
       type: DataTypes.STRING
     },
     template: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(10000),
       allowNull: false
     }
   },{
