@@ -26,6 +26,7 @@ exports.getEmail = function(req, res) {
           for(i = 0; i < reps.length; i++){
             RepRepo.addRep(reps[i]);
           }
+          EmailRepo.setReps(reps);
           return res.render('email.hbs', {
             template: template,
             topic: topics,
@@ -57,11 +58,7 @@ exports.postEmail = function(req, res) {
     emailService.sendEmailtoRep(req.user.email, "frascog17@gmail.com", req.body.subject, req.body.message +" "+allEmails[i], function(err) {
   });
 }
-EmailRepo.addEmail(allEmails,req.body.message,req.body.subject,templateID,req.user).then(function(){
-  EmailRepo.addReps(allEmails,req.body.message,req.body.subject,templateID,req.user);
-});
-
-
+EmailRepo.addEmail(allEmails,req.body.message,req.body.subject,templateID,req.user);
 
   /*
   if(req.body.g-recaptcha-response){

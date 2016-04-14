@@ -3,10 +3,10 @@
 module.exports = function(db, DataTypes) {
     var Email = db.define('Email', {
         id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true
         },
         subject: {
             type: DataTypes.STRING,
@@ -21,6 +21,9 @@ module.exports = function(db, DataTypes) {
         },
         userId: {
           type: DataTypes.INTEGER
+        },
+        reps: {
+          type: DataTypes.JSON
         }
     }, {
         tableName: 'Emails',
