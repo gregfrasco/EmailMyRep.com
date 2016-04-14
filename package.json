@@ -60,6 +60,7 @@
     "paypal-rest-sdk": "^1.6.8",
     "pg": "^4.5.1",
     "pg-hstore": "^2.3.2",
+    "recaptcha2": "^1.0.8",
     "request": "^2.69.0",
     "sendgrid": "^2.0.0",
     "sequelize": "^3.19.3",

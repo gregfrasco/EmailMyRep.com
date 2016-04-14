@@ -6,6 +6,7 @@ var EmailRepo = require('../repositories/EmailRepository.js');
 var RepRepo = require('../repositories/RepsRepository.js');
 var emailService = require('../services/emailService.js');
 var templateID = 0;
+var reCAPTCHA = require('recaptcha2');
 /**
 * Get /email
 * Write an email
@@ -46,6 +47,16 @@ exports.getEmail = function(req, res) {
 * Send email through server
 */
 exports.postEmail = function(req, res) {
+  var recaptcha=new reCAPTCHA({
+    siteKey:'6LehCRwTAAAAAA1BuVP_g8AXHu1TEPX9iSRT6ae2',
+    secretKey:'6LehCRwTAAAAANnAeU_Z78Xi1GsfwhzPdIINYBYh'
+  });
+  recaptcha.validateRequest(req)
+  .then(function(){})
+  .catch(function(errorCodes){
+    req.flash('errors',{ msg: recaptcha.translateErrors(errorCodes)});
+    return res.redirect('/email');
+  });
   var allEmails = [];
   if(req.body.emails == undefined){
     allEmails = [req.user.email];
@@ -55,7 +66,7 @@ exports.postEmail = function(req, res) {
   }
   var i = 0;
   for(i = 0; i < allEmails.length; i++){
-    emailService.sendEmailtoRep(req.user.email, "frascog17@gmail.com", req.body.subject, req.body.message +" "+allEmails[i], function(err) {
+    emailService.sendEmailtoRep(req.user.email, "frascog17@gmail.com", req.body.subject, req.body.message, function(err) {
   });
 }
 EmailRepo.addEmail(allEmails,req.body.message,req.body.subject,templateID,req.user);
