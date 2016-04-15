@@ -66,7 +66,7 @@ exports.postEmail = function(req, res) {
   }
   var i = 0;
   for(i = 0; i < allEmails.length; i++){
-    emailService.sendEmailtoRep(req.user.email, "frascog17@gmail.com", req.body.subject, req.body.message, function(err) {
+    emailService.sendEmailtoRep(req.user.email, allEmails[i], req.body.subject, req.body.message, function(err) {
   });
 }
 EmailRepo.addEmail(allEmails,req.body.message,req.body.subject,templateID,req.user);
